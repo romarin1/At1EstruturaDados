@@ -1,0 +1,45 @@
+<!-- Criação do HTML-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- chama um conjunto de classe e funções em javaScript-->  
+</head>
+
+<!-- Criação do titulo e definição do botao -Adicionar- e do espaco para adicionar o texto-->
+<body style="background: #E0FFFF;">
+  <center><h1>Tarefas</h1>  </center>
+  <center><input type="text" id="enter_task" placeholder="Enter Task"> </center>>
+  <center><input type="submit" id="add" value="Add Task"></center>
+
+  <!--Definindo a cor das tarefas -->
+<p>
+   <center><ul style="color: blue; font-family: arial;" id="todo_list"></ul> </center>
+</p>
+</body>
+
+<!-- Definindo as funções de adicionar, editar e excluir o txto-->
+<script type="text/javascript">
+var counter = 1;
+function enter_task () {
+    var text = $('#enter_task').val();
+    $('#todo_list').append('<li><span>'+ text + ' </span><input type="submit" id="edit' + counter + '" value="Edit">' + '<input type="submit" class="done" id="delete' + counter + '" value="Delete">' +'</li>');
+  
+$('#edit' + counter).click(function(){
+    $(this).prev().attr('contenteditable','true');
+    $(this).prev().focus();
+});
+
+$('#delete' + counter).click(function(){
+    $(this).parent().remove();
+});
+  counter++;
+};
+
+$('#add').on('click', enter_task);
+
+
+
+</script>>
+</html>
